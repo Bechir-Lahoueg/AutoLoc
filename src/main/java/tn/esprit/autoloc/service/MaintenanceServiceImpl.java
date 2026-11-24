@@ -19,6 +19,7 @@ public class MaintenanceServiceImpl implements IMaintenanceService {
     @Override
     public Maintenance create(Maintenance maintenance) {
         Validations.exigerNouveau(maintenance.getIdMaintenance(), RESSOURCE);
+        Validations.exigerValeur(maintenance.getVehicule(), "vehicule");
         valider(maintenance);
         return maintenanceRepository.save(maintenance);
     }

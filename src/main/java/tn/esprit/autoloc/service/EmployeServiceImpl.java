@@ -19,6 +19,7 @@ public class EmployeServiceImpl implements IEmployeService {
     @Override
     public Employe create(Employe employe) {
         Validations.exigerNouveau(employe.getIdEmploye(), RESSOURCE);
+        Validations.exigerValeur(employe.getAgence(), "agence");
         valider(employe);
         return employeRepository.save(employe);
     }

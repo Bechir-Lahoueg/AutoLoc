@@ -19,6 +19,7 @@ public class VehiculeServiceImpl implements IVehiculeService {
     @Override
     public Vehicule create(Vehicule vehicule) {
         Validations.exigerNouveau(vehicule.getIdVehicule(), RESSOURCE);
+        Validations.exigerValeur(vehicule.getAgence(), "agence");
         valider(vehicule);
         return vehiculeRepository.save(vehicule);
     }

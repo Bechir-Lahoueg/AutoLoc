@@ -19,6 +19,7 @@ public class ContratServiceImpl implements IContratService {
     @Override
     public Contrat create(Contrat contrat) {
         Validations.exigerNouveau(contrat.getIdContrat(), RESSOURCE);
+        Validations.exigerValeur(contrat.getReservation(), "reservation");
         valider(contrat);
         return contratRepository.save(contrat);
     }

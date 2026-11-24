@@ -19,6 +19,8 @@ public class ReservationServiceImpl implements IReservationService {
     @Override
     public Reservation create(Reservation reservation) {
         Validations.exigerNouveau(reservation.getIdReservation(), RESSOURCE);
+        Validations.exigerValeur(reservation.getClient(), "client");
+        Validations.exigerValeur(reservation.getVehicule(), "vehicule");
         valider(reservation);
         return reservationRepository.save(reservation);
     }
