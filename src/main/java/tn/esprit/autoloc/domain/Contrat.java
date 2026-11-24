@@ -47,4 +47,15 @@ public class Contrat {
     @OneToMany(mappedBy = "contrat", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Paiement> paiements = new ArrayList<>();
 
+    /** Composition : un paiement est toujours ajouté via son contrat (les deux côtés restent synchronisés). */
+    public void ajouterPaiement(Paiement paiement) {
+        paiements.add(paiement);
+        paiement.setContrat(this);
+    }
+
+    /** Retirer le paiement de la liste suffit : orphanRemoval le supprime en base. */
+    public void retirerPaiement(Paiement paiement) {
+        paiements.remove(paiement);
+        paiement.setContrat(null);
+    }
 }

@@ -8,6 +8,7 @@ class AutoLocApplicationTests {
 
     @Test
     void contextLoads() {
+        // Vide volontairement : le test échoue si le contexte Spring (entités + 9 repositories) ne démarre pas.
     }
 
 }
